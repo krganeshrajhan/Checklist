@@ -9,7 +9,7 @@ import com.vaadin.ui.VerticalLayout;
 /**
  * Created by krganeshrajhan on 29/11/17.
  */
-@SpringUI
+//@SpringUI
 public class TodoUI extends UI {
 
 
