@@ -4,10 +4,7 @@ import com.vaadin.data.Binder;
 import com.vaadin.data.HasValue;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringUI;
-import com.vaadin.ui.CheckBox;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.TextField;
+import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import in.net.bookkeeper.checklist.model.Checklist;
 import in.net.bookkeeper.checklist.repository.ChecklistRepository;
@@ -27,24 +24,12 @@ public class ChecklistItemLayout extends HorizontalLayout {
 
     public ChecklistItemLayout(final Checklist checklist) {
         done = new CheckBox();
-        done.setStyleName(ValoTheme.CHECKBOX_SMALL);
+        done.setStyleName(ValoTheme.CHECKBOX_LARGE);
         text = new TextField();
         text.setStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
+        text.setHeight(50, Unit.PIXELS);
         addComponents(done, text);
         bindData(checklist);
-//        addListener(checklist);
-    }
-
-    private void addListener(final Checklist checklist) {
-        done.addValueChangeListener(new HasValue.ValueChangeListener<Boolean>() {
-            @Override
-            public void valueChange(HasValue.ValueChangeEvent<Boolean> valueChangeEvent) {
-
-//                checklistRepository.findAll();
-                Notification.show(text.getValue()+" completed",
-                        Notification.Type.TRAY_NOTIFICATION);
-            }
-        });
     }
 
     private void bindData(Checklist checklist) {

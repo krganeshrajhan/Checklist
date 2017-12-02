@@ -2,6 +2,7 @@ package in.net.bookkeeper.checklist.ui.layout;
 
 import com.vaadin.data.HasValue;
 import com.vaadin.spring.annotation.SpringComponent;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.VerticalLayout;
 import in.net.bookkeeper.checklist.model.Checklist;
@@ -28,6 +29,7 @@ public class ChecklistLayout extends VerticalLayout {
 
     private void update() {
         removeAllComponents();
+        setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         List<Checklist> checklistList = checklistRepository.findAll();
         updateChecklist(checklistList);
     }
@@ -42,7 +44,7 @@ public class ChecklistLayout extends VerticalLayout {
                 public void valueChange(HasValue.ValueChangeEvent<Boolean> valueChangeEvent) {
 
                     checklistRepository.delete(checklist);
-                    Notification.show(itemLayout.getText().getValue()+" completed",
+                    Notification.show(itemLayout.getText().getValue(),"completed",
                             Notification.Type.TRAY_NOTIFICATION);
                     update();
                 }
