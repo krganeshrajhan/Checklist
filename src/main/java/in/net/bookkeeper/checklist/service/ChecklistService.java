@@ -1,5 +1,9 @@
 package in.net.bookkeeper.checklist.service;
 
+import in.net.bookkeeper.checklist.model.Checklist;
+import in.net.bookkeeper.checklist.repository.ChecklistRepository;
+import org.hibernate.annotations.Check;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -7,6 +11,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ChecklistService {
+
+    @Autowired
+    private ChecklistRepository checklistRepository;
+
+    public Checklist save(Checklist checklist) {
+        return checklistRepository.save(checklist);
+    }
+
 
 
 }

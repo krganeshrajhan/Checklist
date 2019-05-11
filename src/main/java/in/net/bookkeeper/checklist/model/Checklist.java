@@ -1,19 +1,17 @@
 package in.net.bookkeeper.checklist.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by krganeshrajhan on 30/11/17.
  */
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Checklist {
 
     @Id
@@ -24,8 +22,25 @@ public class Checklist {
 
     private boolean done;
 
-    /*public Checklist(String text) {
-        this.text = text;
-    }*/
+    private Date createdDate;
+
+    private Date updatedDate;
+
+    private Date completedDate;
+
+
+    @PrePersist
+    public void prePersist() {
+        if (createdDate == null) {
+            createdDate = new Date();
+        }
+        updatedDate = new Date();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedDate = new Date();
+    }
+
 
 }

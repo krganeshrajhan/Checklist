@@ -10,6 +10,7 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import in.net.bookkeeper.checklist.model.Checklist;
 import in.net.bookkeeper.checklist.ui.layout.ChecklistLayout;
+import in.net.bookkeeper.checklist.ui.view.LoginView;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -27,10 +28,34 @@ public class ChecklistUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
 
+//        setUpLoginLayout();
         setupMainLayout();
         addHeader();
         addForm();
         addChecklistLayout();
+    }
+
+    private void setUpLoginLayout() {
+        rootLayout = new VerticalLayout();
+
+//        addHeader();
+        Label header = new Label("Checklist");
+        header.setStyleName(ValoTheme.LABEL_H1);
+        Label header1 = new Label("Checklist");
+        header1.setStyleName(ValoTheme.LABEL_H1);
+
+        LoginView loginView = new LoginView();
+
+        rootLayout.setMargin(true);
+        rootLayout.setCaption("Cap");
+        rootLayout.setHeight(50, Unit.PERCENTAGE);
+        rootLayout.addComponents(loginView);
+
+        rootLayout.setSizeFull();
+
+//        rootLayout.setComponentAlignment(loginView, Alignment.TOP_CENTER);
+
+        setContent(rootLayout);
     }
 
     public void setupMainLayout() {
