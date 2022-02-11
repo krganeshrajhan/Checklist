@@ -1,14 +1,11 @@
 package in.net.bookkeeper.checklist.ui;
 
 
-import com.vaadin.annotations.Theme;
 import com.vaadin.event.ShortcutAction;
-import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import in.net.bookkeeper.checklist.model.Checklist;
 import in.net.bookkeeper.checklist.ui.layout.ChecklistLayout;
 import in.net.bookkeeper.checklist.ui.view.LoginView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +74,7 @@ public class ChecklistUI extends UI {
         task.setStyleName(ValoTheme.TEXTFIELD_ALIGN_CENTER);
         final Button add = new Button("Add");
         add.setStyleName(ValoTheme.BUTTON_PRIMARY);
-//        add.setIcon(VaadinIcons.PLUS);
+        //        add.setIcon(VaadinIcons.PLUS);
         addLayout.addComponents(task, add);
         rootLayout.addComponent(addLayout);
 

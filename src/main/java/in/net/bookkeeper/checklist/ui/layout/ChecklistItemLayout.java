@@ -1,16 +1,11 @@
 package in.net.bookkeeper.checklist.ui.layout;
 
 import com.vaadin.data.Binder;
-import com.vaadin.data.HasValue;
-import com.vaadin.spring.annotation.SpringComponent;
-import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import in.net.bookkeeper.checklist.model.Checklist;
-import in.net.bookkeeper.checklist.repository.ChecklistRepository;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by krganeshrajhan on 30/11/17.
@@ -25,9 +20,10 @@ public class ChecklistItemLayout extends HorizontalLayout {
     public ChecklistItemLayout(final Checklist checklist) {
         done = new CheckBox();
         done.setStyleName(ValoTheme.CHECKBOX_LARGE);
+        done.setHeight(25, Unit.PIXELS);
         text = new TextField();
         text.setStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
-        text.setHeight(50, Unit.PIXELS);
+        text.setHeight(25, Unit.PIXELS);
         addComponents(done, text);
         bindData(checklist);
     }
